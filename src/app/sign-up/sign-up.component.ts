@@ -8,9 +8,10 @@ import {passwordMatchValidator} from "./utils/sign-up.utils";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignUpComponent {
+  private readonly fb = inject(FormBuilder);
+
   hideEmail: boolean = true;
   hideConfirmEmail: boolean = true;
-  private fb = inject(FormBuilder);
   signUpForm = this.fb.group({
       email: ['', {validators: [Validators.required, Validators.email]}],
       password: ['', [Validators.required, Validators.minLength(6)]],

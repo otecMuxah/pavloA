@@ -12,7 +12,7 @@ export class SignInComponent {
     password: '',
   }
 
-  hidePassword: boolean = true;
+  hidePassword = true;
 
   saveDetails(): void {
     console.log(this.user);

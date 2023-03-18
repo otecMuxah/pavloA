@@ -18,11 +18,11 @@ export class SignUpComponent {
     password: ['', [Validators.required, Validators.minLength(6)]],
     confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
   },
-    { validators: passwordMatchValidator }
+  { validators: passwordMatchValidator }
   );
 
-  hideEmail: boolean = true;
-  hideConfirmEmail: boolean = true;
+  hideEmail = true;
+  hideConfirmEmail = true;
   errorMatcher = new CrossFieldErrorMatcher();
 
   signUp(): void {

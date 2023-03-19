@@ -10,14 +10,14 @@ import {passwordMatchValidator} from "./utils/sign-up.utils";
 export class SignUpComponent {
   private readonly fb = inject(FormBuilder);
 
-  hideEmail: boolean = true;
-  hideConfirmEmail: boolean = true;
+  hideEmail = true;
+  hideConfirmEmail = true;
   signUpForm = this.fb.group({
-      email: ['', {validators: [Validators.required, Validators.email]}],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
-    },
-    {validators: passwordMatchValidator}
+    email: ['', {validators: [Validators.required, Validators.email]}],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
+  },
+  {validators: passwordMatchValidator}
   );
 
   signUp(): void {

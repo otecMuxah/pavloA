@@ -47,7 +47,6 @@
       <mat-label>Confirm password:</mat-label>
       <input
         matInput
-        [errorStateMatcher]="errorMatcher"
         [type]="hideConfirmEmail ? 'password' : 'text'"
         formControlName="confirmPassword">
       <button
@@ -63,7 +62,11 @@
         *ngIf="signUpForm.controls.confirmPassword.errors?.['required']">
         Confirm password is required
       </mat-error>
-      <mat-error *ngIf="signUpForm.errors?.['mismatch'] && (signUpForm.touched || signUpForm.dirty)">
+      <mat-error
+        *ngIf="signUpForm.controls.confirmPassword.errors?.['minlength']">
+        Password should contain at least 6 characters
+      </mat-error>
+      <mat-error *ngIf="signUpForm.controls.confirmPassword.errors?.['mismatch']">
         Password and Confirm password doesn't match.
       </mat-error>
     </mat-form-field>

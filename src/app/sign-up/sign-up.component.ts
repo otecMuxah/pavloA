@@ -1,23 +1,24 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
-import {passwordMatchValidator} from "./utils/sign-up.utils";
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { passwordMatchValidator } from './utils/sign-up.utils';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignUpComponent {
   private readonly fb = inject(FormBuilder);
 
-  hideEmail: boolean = true;
-  hideConfirmEmail: boolean = true;
-  signUpForm = this.fb.group({
-      email: ['', {validators: [Validators.required, Validators.email]}],
+  hideEmail = true;
+  hideConfirmEmail = true;
+  signUpForm = this.fb.group(
+    {
+      email: ['', { validators: [Validators.required, Validators.email] }],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
     },
-    {validators: passwordMatchValidator}
+    { validators: passwordMatchValidator }
   );
 
   signUp(): void {

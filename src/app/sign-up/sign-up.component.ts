@@ -10,6 +10,8 @@ import { SignUpService } from './services/sign-up.service';
 import { Observable } from 'rxjs';
 import { ICountry } from './models/country.model';
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -25,7 +27,10 @@ export class SignUpComponent implements OnInit {
   hideConfirmEmail = true;
   signUpForm = this.fb.group(
     {
-      email: ['', { validators: [Validators.required, Validators.email] }],
+      email: [
+        '',
+        { validators: [Validators.required, Validators.pattern(EMAIL_REGEX)] },
+      ],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
       country: ['', [Validators.required]],

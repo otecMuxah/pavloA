@@ -1,4 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
 
+@font-face {
+  font-family: kanit;
+  src: url('assets/fonts/kanit/KanitRegular.ttf') format("ttf");
+}
+
+@font-face {
+  font-family: impact;
+  src: url('assets/fonts/impact/ImpactRegular.ttf') format("ttf");
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+  font-size: 1rem !important;
+  font-family: 'kanit', sans-serif;
+  color: #fafafa;
+}
+
+.mat-mdc-option .mat-icon {
+  margin-bottom: 0.5rem;
+}
+
+app-sign-up {
+  .mdc-text-field {
+    background: transparent !important;
+    border-bottom: 0.0625rem solid #858585 !important;
+  }
+
+  .mdc-text-field__input,
+  .mdc-floating-label,
+  .mat-mdc-select-arrow {
+    color: #fafafa !important;
+  }
+}
+
+

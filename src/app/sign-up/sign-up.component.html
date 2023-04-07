@@ -1,86 +1,145 @@
-<div class="container">
-  <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
-    <mat-form-field>
-      <mat-label>Email:</mat-label>
-      <input
-        matInput
-        type="text"
-        inputmode="email"
-        formControlName="email"
-        placeholder="example@abc.com">
-      <mat-icon matSuffix>mail_outline</mat-icon>
-      <mat-error *ngIf="signUpForm.controls.email.errors?.['required']">
-        Email is required
-      </mat-error>
-      <mat-error *ngIf="signUpForm.controls.email.errors?.['email']">
-        Please enter valid email
-      </mat-error>
-    </mat-form-field>
+<div class="sign-up-form-page-background">
+  <div class="container">
+    <div class="sign-up-form">
+      <div class="sign-up-form__title">
+        Create account
+      </div>
+      <form
+        class="sign-up-form__form form"
+        [formGroup]="signUpForm"
+        (ngSubmit)="signUp()">
+        <mat-form-field>
+          <mat-label>Email:</mat-label>
+          <input
+            matInput
+            type="text"
+            inputmode="email"
+            formControlName="email"
+            placeholder="example@abc.com">
+          <mat-icon matSuffix>mail_outline</mat-icon>
+          <mat-error *ngIf="signUpForm.controls.email.errors?.['required']">
+            Email is required
+          </mat-error>
+          <mat-error *ngIf="signUpForm.controls.email.errors?.['email']">
+            Please enter valid email
+          </mat-error>
+        </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Password:</mat-label>
-      <input
-        matInput
-        [type]="hideEmail ? 'password' : 'text'"
-        formControlName="password"
-        placeholder="At least 6 characters">
-      <button
-        type="button"
-        mat-icon-button
-        matSuffix
-        (click)="hideEmail = !hideEmail"
-        [attr.aria-label]="'Hide password'"
-        [attr.aria-pressed]="hideEmail">
-        <mat-icon>{{ hideEmail ? 'visibility_off' : 'visibility' }}</mat-icon>
-      </button>
-      <mat-error
-        *ngIf="signUpForm.controls.password.errors?.['required']">
-        Password is required
-      </mat-error>
-      <mat-error
-        *ngIf="signUpForm.controls.password.errors?.['minlength']">
-        Password should contain at least 6 characters
-      </mat-error>
-    </mat-form-field>
+        <mat-form-field>
+          <mat-label>Password:</mat-label>
+          <input
+            matInput
+            [type]="hideEmail ? 'password' : 'text'"
+            formControlName="password"
+            placeholder="At least 6 characters">
+          <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="hideEmail = !hideEmail"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hideEmail">
+            <mat-icon>{{ hideEmail ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error
+            *ngIf="signUpForm.controls.password.errors?.['required']">
+            Password is required
+          </mat-error>
+          <mat-error
+            *ngIf="signUpForm.controls.password.errors?.['minlength']">
+            Password should contain at least 6 characters
+          </mat-error>
+        </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Confirm password:</mat-label>
-      <input
-        matInput
-        [type]="hideConfirmEmail ? 'password' : 'text'"
-        formControlName="confirmPassword">
-      <button
-        type="button"
-        mat-icon-button
-        matSuffix
-        (click)="hideConfirmEmail = !hideConfirmEmail"
-        [attr.aria-label]="'Hide password'"
-        [attr.aria-pressed]="hideConfirmEmail">
-        <mat-icon>{{ hideConfirmEmail ? 'visibility_off' : 'visibility' }}</mat-icon>
-      </button>
-      <mat-error
-        *ngIf="signUpForm.controls.confirmPassword.errors?.['required']">
-        Confirm password is required
-      </mat-error>
-      <mat-error
-        *ngIf="signUpForm.controls.confirmPassword.errors?.['minlength']">
-        Password should contain at least 6 characters
-      </mat-error>
-      <mat-error *ngIf="signUpForm.controls.confirmPassword.errors?.['mismatch']">
-        Password and Confirm password doesn't match.
-      </mat-error>
-    </mat-form-field>
+        <mat-form-field>
+          <mat-label>Confirm password:</mat-label>
+          <input
+            matInput
+            [type]="hideConfirmEmail ? 'password' : 'text'"
+            formControlName="confirmPassword">
+          <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="hideConfirmEmail = !hideConfirmEmail"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hideConfirmEmail">
+            <mat-icon>{{ hideConfirmEmail ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error
+            *ngIf="signUpForm.controls.confirmPassword.errors?.['required']">
+            Confirm password is required
+          </mat-error>
+          <mat-error
+            *ngIf="signUpForm.controls.confirmPassword.errors?.['minlength']">
+            Password should contain at least 6 characters
+          </mat-error>
+          <mat-error *ngIf="signUpForm.controls.confirmPassword.errors?.['mismatch']">
+            Password and Confirm password doesn't match.
+          </mat-error>
+        </mat-form-field>
 
-    <div>
-      <button
-        mat-raised-button
-        color="primary"
-        type="submit"
-        [disabled]="!signUpForm.valid"
-      >Sign up</button>
+        <mat-form-field>
+          <mat-label>Country:</mat-label>
+          <mat-select formControlName="country">
+            <mat-select-trigger class="form__select-trigger">
+              {{ signUpForm.controls.country.value }}
+            </mat-select-trigger>
+            <mat-option
+              *ngFor="let country of countries$ | async"
+              [value]="country.flag + ' ' + country.name.common"
+            >
+              <mat-icon class="selection-icon">{{ country.flag }}</mat-icon>
+              {{ country.name.common }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="signUpForm.controls.country.errors?.['required']">
+            Please select your country
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Address:</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="address">
+          <mat-error *ngIf="signUpForm.controls.address.errors?.['required']">
+            Email is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Phone:</mat-label>
+          <input
+            matInput
+            type="text"
+            inputmode="tel"
+            formControlName="phone">
+          <mat-error *ngIf="signUpForm.controls.phone.errors?.['required']">
+            Phone is required
+          </mat-error>
+        </mat-form-field>
+
+        <div>
+          <button
+            class="sign-up-form__confirm-button"
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!signUpForm.valid"
+          >Create account
+          </button>
+        </div>
+      </form>
+      <div>
+        Already have an account?
+        <a [routerLink]="['/sign-in']">Log in</a>
+      </div>
     </div>
-  </form>
+  </div>
 </div>
+
 
 
 

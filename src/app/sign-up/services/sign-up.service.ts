@@ -3,7 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { ICountry } from '../models/country.model';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class SignUpService {
   http = inject(HttpClient);
 

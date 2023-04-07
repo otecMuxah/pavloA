@@ -19,6 +19,7 @@ const materialModules = [
   MatIconModule,
   MatButtonModule,
   MatInputModule,
+  MatSelectModule,
 ];
 
 @NgModule({
@@ -30,7 +31,6 @@ const materialModules = [
     ReactiveFormsModule,
     ...materialModules,
     FormsModule,
-    MatSelectModule,
     HttpClientModule,
   ],
   bootstrap: [AppComponent],

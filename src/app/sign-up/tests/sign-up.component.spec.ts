@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSelectModule } from "@angular/material/select";
 import { RouterTestingModule } from "@angular/router/testing";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
 
 describe('SignUpComponent', () => {
   let component: SignUpComponent;
@@ -27,6 +28,7 @@ describe('SignUpComponent', () => {
         HttpClientModule,
         MatSelectModule,
         RouterTestingModule,
+        MatAutocompleteModule,
       ],
     }).compileComponents();
 

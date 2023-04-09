@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { ICountry } from '../models/country.model';
 import {
   RESTCOUNTRIES_ENDPOINTS,
@@ -23,7 +23,8 @@ export class SignUpService {
         return response.sort((a: ICountry, b: ICountry) =>
           a.name.common.localeCompare(b.name.common)
         );
-      })
+      }),
+      catchError(() => of([]))
     );
   }
 }

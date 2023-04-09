@@ -53,6 +53,10 @@
     font-size: 1rem;
     font-weight: 700;
   }
+
+  &__confirm-button[disabled] {
+    opacity: 0.5;
+  }
 }
 
 

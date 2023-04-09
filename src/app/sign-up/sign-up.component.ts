@@ -56,7 +56,6 @@ export class SignUpComponent implements OnInit {
       debounceTime(500),
       map((country: string | null) => {
         const countryName = country?.split(' ')[1];
-
         return countryName ? countryName.toLowerCase() : country;
       }),
       distinctUntilChanged(),

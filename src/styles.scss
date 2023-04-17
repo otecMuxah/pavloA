@@ -28,7 +28,8 @@ body {
   margin-bottom: 0.5rem;
 }
 
-app-sign-up {
+app-sign-up,
+app-sign-in {
   .mdc-text-field {
     background: transparent !important;
     border-bottom: 0.0625rem solid #858585 !important;

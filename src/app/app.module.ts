@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 const materialModules = [
   MatFormFieldModule,
@@ -20,6 +21,7 @@ const materialModules = [
   MatButtonModule,
   MatInputModule,
   MatSelectModule,
+  MatAutocompleteModule,
 ];
 
 @NgModule({

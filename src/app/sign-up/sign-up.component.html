@@ -81,10 +81,12 @@
 
         <mat-form-field>
           <mat-label>Country:</mat-label>
-          <mat-select formControlName="country">
-            <mat-select-trigger class="form__select-trigger">
-              {{ signUpForm.controls.country.value }}
-            </mat-select-trigger>
+          <input type="text"
+            placeholder="Select your country"
+            matInput
+            [formControl]="signUpForm.controls.country"
+            [matAutocomplete]="auto">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
             <mat-option
               *ngFor="let country of countries$ | async"
               [value]="country.flag + ' ' + country.name.common"
@@ -92,7 +94,7 @@
               <mat-icon class="selection-icon">{{ country.flag }}</mat-icon>
               {{ country.name.common }}
             </mat-option>
-          </mat-select>
+          </mat-autocomplete>
           <mat-error *ngIf="signUpForm.controls.country.errors?.['required']">
             Please select your country
           </mat-error>
@@ -125,7 +127,6 @@
           <button
             class="sign-up-form__confirm-button"
             mat-raised-button
-            color="primary"
             type="submit"
             [disabled]="!signUpForm.valid"
           >Create account

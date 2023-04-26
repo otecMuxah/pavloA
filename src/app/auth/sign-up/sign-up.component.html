@@ -127,8 +127,9 @@
           <button
             class="sign-up-form__confirm-button"
             mat-raised-button
+            color="primary"
             type="submit"
-            [disabled]="!signUpForm.valid"
+            [disabled]="signUpForm.invalid"
           >Create account
           </button>
         </div>

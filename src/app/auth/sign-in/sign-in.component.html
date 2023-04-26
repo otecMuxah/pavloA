@@ -63,8 +63,9 @@
           <button
             class="sign-in-form__confirm-button"
             mat-raised-button
+            color="primary"
             type="submit"
-            [disabled]="!loginForm.form.valid"
+            [disabled]="loginForm.form.invalid"
           >Log in</button>
         </div>
       </form>

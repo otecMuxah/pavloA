@@ -1,0 +1,8 @@
+@import 'mat-button';
+@include mat-button-theme();
+
+@import 'mat-input';
+@include mat-input-theme();
+
+@import 'mat-option';
+@include mat-option-theme();

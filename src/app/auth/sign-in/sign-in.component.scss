@@ -1,0 +1,13 @@
+@import '../auth-mixins';
+
+.sign-in-page-background {
+  @include pageBackground();
+}
+
+.container {
+  @include containerStyles();
+}
+
+.sign-in-form {
+  @include formStyles();
+}

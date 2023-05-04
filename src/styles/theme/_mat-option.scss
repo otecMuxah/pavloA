@@ -1,0 +1,7 @@
+@use '@angular/material' as mat;
+
+@mixin mat-option-theme() {
+  .mat-mdc-option .mat-icon {
+    margin-bottom: 0.5rem;
+  }
+}

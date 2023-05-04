@@ -1,0 +1,17 @@
+@use '@angular/material' as mat;
+
+@mixin mat-input-theme() {
+  .mdc-text-field {
+    background: transparent !important;
+    border-bottom: 0.0625rem solid #858585 !important;
+  }
+
+  .mdc-text-field__input,
+  .mdc-floating-label, {
+    color: #fafafa !important;
+  }
+
+  .mat-mdc-input-element::placeholder {
+    color: #858585 !important;
+  }
+}
